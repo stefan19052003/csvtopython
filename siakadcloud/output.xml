@@ -1,0 +1,1990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20200410 20:14:41.194" generator="Robot 3.1.2 (Python 2.7.11 on win32)">
+<suite source="C:\Users\BilSteJo\Programming\siakadcloud\SiakadCloud.robot" id="s1" name="SiakadCloud">
+<test id="s1-t1" name="Login">
+<kw name="Read Csv File To Associative" library="CSVLibrary">
+<doc>Read CSV file and return its content as a Python list of dictionaries.</doc>
+<arguments>
+<arg>appconfig.csv</arg>
+</arguments>
+<assign>
+<var>@{config}</var>
+</assign>
+<msg timestamp="20200410 20:14:41.401" level="INFO">@{config} = [ {'url': 'https://driyarkara.siakadcloud.com/', 'username': '10092019', 'pwd': '10092019'} ]</msg>
+<status status="PASS" endtime="20200410 20:14:41.401" starttime="20200410 20:14:41.401"></status>
+</kw>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>&amp;{config[0]}[url]</arg>
+<arg>chrome</arg>
+</arguments>
+<assign>
+<var>${mainBrowser}</var>
+</assign>
+<msg timestamp="20200410 20:14:41.402" level="INFO">Opening browser 'chrome' to base url 'https://driyarkara.siakadcloud.com/'.</msg>
+<msg timestamp="20200410 20:14:54.332" level="INFO">${mainBrowser} = 1</msg>
+<status status="PASS" endtime="20200410 20:14:54.332" starttime="20200410 20:14:41.401"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20200410 20:14:54.475" starttime="20200410 20:14:54.333"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; start login for username: &amp;{config[0]}[username]</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:14:54.476" starttime="20200410 20:14:54.475"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//*[@id="userid"]</arg>
+<arg>timeout=30s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:14:54.524" starttime="20200410 20:14:54.477"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="userid"]</arg>
+<arg>&amp;{config[0]}[username]</arg>
+</arguments>
+<msg timestamp="20200410 20:14:54.525" level="INFO">Typing text '10092019' into text field '//*[@id="userid"]'.</msg>
+<status status="PASS" endtime="20200410 20:14:54.670" starttime="20200410 20:14:54.525"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="password"]</arg>
+<arg>&amp;{config[0]}[pwd]</arg>
+</arguments>
+<msg timestamp="20200410 20:14:54.671" level="INFO">Typing password into text field '//*[@id="password"]'.</msg>
+<msg timestamp="20200410 20:14:54.723" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20200410 20:14:54.785" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" endtime="20200410 20:14:54.785" starttime="20200410 20:14:54.671"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//h2[text()="Silakan Login"]/following-sibling::form/div[3]/button[1]</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:14:54.820" starttime="20200410 20:14:54.785"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//h2[text()="Silakan Login"]/following-sibling::form/div[3]/button[1]</arg>
+</arguments>
+<msg timestamp="20200410 20:14:54.822" level="INFO">Clicking element '//h2[text()="Silakan Login"]/following-sibling::form/div[3]/button[1]'.</msg>
+<status status="PASS" endtime="20200410 20:14:59.507" starttime="20200410 20:14:54.822"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//ul[@id="navigation"]/li[1]</arg>
+<arg>timeout=30s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:14:59.548" starttime="20200410 20:14:59.508"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; username &amp;{config[0]}[username] logged in successfully</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:14:59.549" starttime="20200410 20:14:59.548"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:14:59.549" critical="yes" starttime="20200410 20:14:41.400"></status>
+</test>
+<test id="s1-t2" name="Enter Presensi Kelas">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>20191</arg>
+</arguments>
+<assign>
+<var>${periode}</var>
+</assign>
+<msg timestamp="20200410 20:14:59.552" level="INFO">${periode} = 20191</msg>
+<status status="PASS" endtime="20200410 20:14:59.552" starttime="20200410 20:14:59.552"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>2019</arg>
+</arguments>
+<assign>
+<var>${kurikulum}</var>
+</assign>
+<msg timestamp="20200410 20:14:59.553" level="INFO">${kurikulum} = 2019</msg>
+<status status="PASS" endtime="20200410 20:14:59.553" starttime="20200410 20:14:59.553"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>7172</arg>
+</arguments>
+<assign>
+<var>${kode}</var>
+</assign>
+<msg timestamp="20200410 20:14:59.553" level="INFO">${kode} = 7172</msg>
+<status status="PASS" endtime="20200410 20:14:59.553" starttime="20200410 20:14:59.553"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double clicks the element identified by ``locator``.</doc>
+<arguments>
+<arg>//ul[@id="navigation"]/li[1]</arg>
+</arguments>
+<msg timestamp="20200410 20:14:59.554" level="INFO">Double clicking element '//ul[@id="navigation"]/li[1]'.</msg>
+<status status="PASS" endtime="20200410 20:14:59.857" starttime="20200410 20:14:59.554"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double clicks the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="navigation"]/li[1]/div[2]</arg>
+</arguments>
+<msg timestamp="20200410 20:14:59.858" level="INFO">Double clicking element '//*[@id="navigation"]/li[1]/div[2]'.</msg>
+<status status="PASS" endtime="20200410 20:15:00.151" starttime="20200410 20:14:59.858"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//*[@id="siakad"]/div/div</arg>
+<arg>timeout=30s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:00.192" starttime="20200410 20:15:00.152"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="siakad"]/div/div</arg>
+</arguments>
+<msg timestamp="20200410 20:15:00.193" level="INFO">Clicking element '//*[@id="siakad"]/div/div'.</msg>
+<status status="PASS" endtime="20200410 20:15:00.237" starttime="20200410 20:15:00.193"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//li[@class="dropdown"][2]/a</arg>
+<arg>timeout=30s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:07.105" starttime="20200410 20:15:00.238"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//li[@class="dropdown"][2]/a</arg>
+</arguments>
+<msg timestamp="20200410 20:15:07.105" level="INFO">Clicking element '//li[@class="dropdown"][2]/a'.</msg>
+<status status="PASS" endtime="20200410 20:15:07.395" starttime="20200410 20:15:07.105"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//li[@class="dropdown"][2]/ul/li[2]/a</arg>
+</arguments>
+<msg timestamp="20200410 20:15:07.396" level="INFO">Clicking element '//li[@class="dropdown"][2]/ul/li[2]/a'.</msg>
+<status status="PASS" endtime="20200410 20:15:07.451" starttime="20200410 20:15:07.396"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//li[@class="dropdown"][2]/ul/li[2]/ul/li</arg>
+</arguments>
+<msg timestamp="20200410 20:15:07.452" level="INFO">Clicking element '//li[@class="dropdown"][2]/ul/li[2]/ul/li'.</msg>
+<status status="PASS" endtime="20200410 20:15:09.965" starttime="20200410 20:15:07.451"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//*[@id="form_list"]/div[1]/table/tbody/tr/td[11]/button</arg>
+<arg>timeout=30s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:10.012" starttime="20200410 20:15:09.967"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; landed on kelas kuliah page</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:10.013" starttime="20200410 20:15:10.013"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<arguments>
+<arg>//select[@id="periode"]</arg>
+<arg>${periode}</arg>
+</arguments>
+<msg timestamp="20200410 20:15:10.014" level="INFO">Selecting options from selection list '//select[@id="periode"]' by value 20191.</msg>
+<status status="PASS" endtime="20200410 20:15:12.668" starttime="20200410 20:15:10.014"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<arguments>
+<arg>//select[@id="kurikulum"]</arg>
+<arg>${kurikulum}</arg>
+</arguments>
+<msg timestamp="20200410 20:15:12.670" level="INFO">Selecting options from selection list '//select[@id="kurikulum"]' by value 2019.</msg>
+<status status="PASS" endtime="20200410 20:15:14.577" starttime="20200410 20:15:12.669"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//*[@id="form_list"]/div[1]/table/tbody/tr</arg>
+<arg>timeout=30s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:14.629" starttime="20200410 20:15:14.578"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="form_list"]/div[1]/table/tbody/tr/td[2]</arg>
+</arguments>
+<assign>
+<var>${kode_matkul}</var>
+</assign>
+<msg timestamp="20200410 20:15:14.659" level="INFO">${kode_matkul} = 7172</msg>
+<status status="PASS" endtime="20200410 20:15:14.659" starttime="20200410 20:15:14.629"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${kode_matkul}</arg>
+<arg>${kode}</arg>
+<arg>ignore_case=True</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:14.660" starttime="20200410 20:15:14.660"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; kode matkul: ${kode} found.</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:14.661" starttime="20200410 20:15:14.661"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="form_list"]/div[1]/table/tbody/tr/td[11]/div/button</arg>
+</arguments>
+<msg timestamp="20200410 20:15:14.662" level="INFO">Clicking element '//*[@id="form_list"]/div[1]/table/tbody/tr/td[11]/div/button'.</msg>
+<status status="PASS" endtime="20200410 20:15:14.782" starttime="20200410 20:15:14.662"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//a[text()="Presensi Kelas"]</arg>
+<arg>timeout=30s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:14.830" starttime="20200410 20:15:14.783"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>//a[text()="Presensi Kelas"]</arg>
+</arguments>
+<msg timestamp="20200410 20:15:14.831" level="INFO">Clicking element '//a[text()="Presensi Kelas"]'.</msg>
+<status status="PASS" endtime="20200410 20:15:16.900" starttime="20200410 20:15:14.831"></status>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<arguments>
+<arg>//*[@id="header-search"]/div/div[2]/button[2]</arg>
+</arguments>
+<msg timestamp="20200410 20:15:16.929" level="INFO">Current page contains element '//*[@id="header-search"]/div/div[2]/button[2]'.</msg>
+<status status="PASS" endtime="20200410 20:15:16.929" starttime="20200410 20:15:16.902"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; Landed on Presensi Kelas page. Periode ${periode}. Kurikulum ${kurikulum}. Kode ${kode}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:16.930" starttime="20200410 20:15:16.930"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20200410 20:15:21.933" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" endtime="20200410 20:15:21.933" starttime="20200410 20:15:16.931"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:21.933" critical="yes" starttime="20200410 20:14:59.551"></status>
+</test>
+<test id="s1-t3" name="Test">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>Selasa, 20 Agu 2019</arg>
+</arguments>
+<assign>
+<var>${jadwal}</var>
+</assign>
+<msg timestamp="20200410 20:15:21.936" level="INFO">${jadwal} = Selasa, 20 Agu 2019</msg>
+<status status="PASS" endtime="20200410 20:15:21.936" starttime="20200410 20:15:21.936"></status>
+</kw>
+<kw name="Read Csv File To Associative" library="CSVLibrary">
+<doc>Read CSV file and return its content as a Python list of dictionaries.</doc>
+<arguments>
+<arg>test.csv</arg>
+</arguments>
+<assign>
+<var>@{data}</var>
+</assign>
+<msg timestamp="20200410 20:15:21.937" level="INFO">@{data} = [ ]</msg>
+<status status="PASS" endtime="20200410 20:15:21.938" starttime="20200410 20:15:21.936"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt; Opening presensi kelas popup: ${jadwal}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:21.938" starttime="20200410 20:15:21.938"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//tr[1]//td[10]//button[1]</arg>
+<arg>30s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:21.964" starttime="20200410 20:15:21.939"></status>
+</kw>
+<kw name="Double Click Element" library="Selenium2Library">
+<doc>Double clicks the element identified by ``locator``.</doc>
+<arguments>
+<arg>//tr[1]//td[10]//button[1]</arg>
+</arguments>
+<msg timestamp="20200410 20:15:21.965" level="INFO">Double clicking element '//tr[1]//td[10]//button[1]'.</msg>
+<status status="PASS" endtime="20200410 20:15:22.264" starttime="20200410 20:15:21.964"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr</arg>
+<arg>60s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.193" starttime="20200410 20:15:22.265"></status>
+</kw>
+<kw name="Get Element Count" library="Selenium2Library">
+<doc>Returns the number of elements matching ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr/td[2]</arg>
+</arguments>
+<assign>
+<var>${rows}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.207" level="INFO">${rows} = 15</msg>
+<status status="PASS" endtime="20200410 20:15:23.207" starttime="20200410 20:15:23.194"></status>
+</kw>
+<kw name="Get Element Count" library="Selenium2Library">
+<doc>Returns the number of elements matching ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/thead/tr/th</arg>
+</arguments>
+<assign>
+<var>${cols}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.219" level="INFO">${cols} = 4</msg>
+<status status="PASS" endtime="20200410 20:15:23.219" starttime="20200410 20:15:23.208"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="Selenium2Library">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']//tbody/tr[1]/td[2]</arg>
+<arg>60s</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.243" starttime="20200410 20:15:23.220"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt;rows = ${rows}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.244" starttime="20200410 20:15:23.244"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt;cols = ${cols}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.245" starttime="20200410 20:15:23.245"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>${separator1}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.246" level="INFO">${separator1} = ,</msg>
+<status status="PASS" endtime="20200410 20:15:23.246" starttime="20200410 20:15:23.246"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>s.d</arg>
+</arguments>
+<assign>
+<var>${separator2}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.247" level="INFO">${separator2} = s.d</msg>
+<status status="PASS" endtime="20200410 20:15:23.247" starttime="20200410 20:15:23.247"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_dosen']/tbody/tr/td[3]</arg>
+</arguments>
+<assign>
+<var>${dosen}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.277" level="INFO">${dosen} = THOMAS HIDYA TJAYA</msg>
+<status status="PASS" endtime="20200410 20:15:23.277" starttime="20200410 20:15:23.248"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//span[@id='span_jadwal']</arg>
+</arguments>
+<assign>
+<var>${kapan}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.302" level="INFO">${kapan} = Selasa, 20 Agustus 2019, 11:10 s.d 12:50</msg>
+<status status="PASS" endtime="20200410 20:15:23.302" starttime="20200410 20:15:23.278"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="modal_list"]/div/div/div[1]/div/div[1]/div[2]</arg>
+</arguments>
+<assign>
+<var>${kode}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.327" level="INFO">${kode} = 7172 - SEMINAR EMMANUEL LEVINAS (THT)</msg>
+<status status="PASS" endtime="20200410 20:15:23.327" starttime="20200410 20:15:23.303"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt;dosen = ${dosen}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.328" starttime="20200410 20:15:23.328"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt;kode = ${kode}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.330" starttime="20200410 20:15:23.329"></status>
+</kw>
+<kw name="Split String From Right" library="String">
+<doc>Splits the ``string`` using ``separator`` starting from right.</doc>
+<arguments>
+<arg>${kapan}</arg>
+<arg>${separator1}</arg>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${pisah}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.331" level="INFO">${pisah} = [u'Selasa, 20 Agustus 2019', u' 11:10 s.d 12:50']</msg>
+<status status="PASS" endtime="20200410 20:15:23.331" starttime="20200410 20:15:23.330"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${pisah}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.332" starttime="20200410 20:15:23.331"></status>
+</kw>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${pisah[1]}</arg>
+<arg>${separator2}</arg>
+</arguments>
+<assign>
+<var>${pisahjam}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.333" level="INFO">${pisahjam} = [u' 11:10 ', u' 12:50']</msg>
+<status status="PASS" endtime="20200410 20:15:23.333" starttime="20200410 20:15:23.332"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${pisah[0]}</arg>
+</arguments>
+<assign>
+<var>${tgl}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.334" level="INFO">${tgl} = Selasa, 20 Agustus 2019</msg>
+<status status="PASS" endtime="20200410 20:15:23.334" starttime="20200410 20:15:23.333"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${pisahjam[0]}</arg>
+</arguments>
+<assign>
+<var>${mulai}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.335" level="INFO">${mulai} =  11:10 </msg>
+<status status="PASS" endtime="20200410 20:15:23.335" starttime="20200410 20:15:23.335"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${pisahjam[1]}</arg>
+</arguments>
+<assign>
+<var>${selesai}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.336" level="INFO">${selesai} =  12:50</msg>
+<status status="PASS" endtime="20200410 20:15:23.336" starttime="20200410 20:15:23.336"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt;tanggal: ${tgl}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.338" starttime="20200410 20:15:23.337"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt;Mulai: ${mulai}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.339" starttime="20200410 20:15:23.339"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>&gt;&gt;&gt;Selesai: ${selesai}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.341" starttime="20200410 20:15:23.340"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<assign>
+<var>${data1}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.341" level="INFO">${data1} = []</msg>
+<status status="PASS" endtime="20200410 20:15:23.341" starttime="20200410 20:15:23.341"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<assign>
+<var>${data2}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.342" level="INFO">${data2} = []</msg>
+<status status="PASS" endtime="20200410 20:15:23.342" starttime="20200410 20:15:23.341"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<assign>
+<var>${data3}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.342" level="INFO">${data3} = []</msg>
+<status status="PASS" endtime="20200410 20:15:23.342" starttime="20200410 20:15:23.342"></status>
+</kw>
+<kw type="for" name="${i} IN RANGE [ 1 | ${rows} ]">
+<kw type="foritem" name="${i} = 1">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.365" level="INFO">${nim} = 0240310116</msg>
+<status status="PASS" endtime="20200410 20:15:23.366" starttime="20200410 20:15:23.343"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.388" level="INFO">${identitas} = CLEMENS DION YUSILA TIMUR</msg>
+<status status="PASS" endtime="20200410 20:15:23.388" starttime="20200410 20:15:23.366"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.411" level="INFO">${kehadiran} = Sakit</msg>
+<status status="PASS" endtime="20200410 20:15:23.411" starttime="20200410 20:15:23.388"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.411" starttime="20200410 20:15:23.411"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.411" starttime="20200410 20:15:23.411"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.412" starttime="20200410 20:15:23.411"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:23.412" starttime="20200410 20:15:23.342"></status>
+</kw>
+<kw type="foritem" name="${i} = 2">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.434" level="INFO">${nim} = 0240810116</msg>
+<status status="PASS" endtime="20200410 20:15:23.434" starttime="20200410 20:15:23.412"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.456" level="INFO">${identitas} = GEDE RANGGA RISWANDANU</msg>
+<status status="PASS" endtime="20200410 20:15:23.456" starttime="20200410 20:15:23.434"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.483" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:23.484" starttime="20200410 20:15:23.456"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.484" starttime="20200410 20:15:23.484"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.484" starttime="20200410 20:15:23.484"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.485" starttime="20200410 20:15:23.484"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:23.485" starttime="20200410 20:15:23.412"></status>
+</kw>
+<kw type="foritem" name="${i} = 3">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.507" level="INFO">${nim} = 0245710117</msg>
+<status status="PASS" endtime="20200410 20:15:23.507" starttime="20200410 20:15:23.485"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.528" level="INFO">${identitas} = AARON PURNOMO MURNIADI</msg>
+<status status="PASS" endtime="20200410 20:15:23.528" starttime="20200410 20:15:23.507"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.550" level="INFO">${kehadiran} = Izin</msg>
+<status status="PASS" endtime="20200410 20:15:23.550" starttime="20200410 20:15:23.528"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.550" starttime="20200410 20:15:23.550"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.550" starttime="20200410 20:15:23.550"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.551" starttime="20200410 20:15:23.550"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:23.551" starttime="20200410 20:15:23.485"></status>
+</kw>
+<kw type="foritem" name="${i} = 4">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.577" level="INFO">${nim} = 0245810117</msg>
+<status status="PASS" endtime="20200410 20:15:23.578" starttime="20200410 20:15:23.551"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.605" level="INFO">${identitas} = ALIF YUSUF VICAUSSIE</msg>
+<status status="PASS" endtime="20200410 20:15:23.605" starttime="20200410 20:15:23.578"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.643" level="INFO">${kehadiran} = Alpa</msg>
+<status status="PASS" endtime="20200410 20:15:23.643" starttime="20200410 20:15:23.605"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.643" starttime="20200410 20:15:23.643"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.644" starttime="20200410 20:15:23.643"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.644" starttime="20200410 20:15:23.644"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:23.644" starttime="20200410 20:15:23.551"></status>
+</kw>
+<kw type="foritem" name="${i} = 5">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.665" level="INFO">${nim} = 0245910117</msg>
+<status status="PASS" endtime="20200410 20:15:23.665" starttime="20200410 20:15:23.644"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.687" level="INFO">${identitas} = ANDREAS CORSINI MIGUEL TAKIMAI</msg>
+<status status="PASS" endtime="20200410 20:15:23.687" starttime="20200410 20:15:23.665"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.710" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:23.710" starttime="20200410 20:15:23.687"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.710" starttime="20200410 20:15:23.710"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.711" starttime="20200410 20:15:23.710"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.711" starttime="20200410 20:15:23.711"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:23.711" starttime="20200410 20:15:23.644"></status>
+</kw>
+<kw type="foritem" name="${i} = 6">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.734" level="INFO">${nim} = 0246210117</msg>
+<status status="PASS" endtime="20200410 20:15:23.734" starttime="20200410 20:15:23.711"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.763" level="INFO">${identitas} = BENICDIKTUS JULIAR ELMAWAN</msg>
+<status status="PASS" endtime="20200410 20:15:23.763" starttime="20200410 20:15:23.734"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.787" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:23.787" starttime="20200410 20:15:23.763"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.787" starttime="20200410 20:15:23.787"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.787" starttime="20200410 20:15:23.787"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.788" starttime="20200410 20:15:23.787"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:23.788" starttime="20200410 20:15:23.711"></status>
+</kw>
+<kw type="foritem" name="${i} = 7">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.809" level="INFO">${nim} = 0246410117</msg>
+<status status="PASS" endtime="20200410 20:15:23.809" starttime="20200410 20:15:23.788"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.831" level="INFO">${identitas} = GILBERTO HORNAY</msg>
+<status status="PASS" endtime="20200410 20:15:23.831" starttime="20200410 20:15:23.809"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.856" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:23.856" starttime="20200410 20:15:23.831"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.857" starttime="20200410 20:15:23.857"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.858" starttime="20200410 20:15:23.857"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.858" starttime="20200410 20:15:23.858"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:23.859" starttime="20200410 20:15:23.788"></status>
+</kw>
+<kw type="foritem" name="${i} = 8">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.889" level="INFO">${nim} = 0246510117</msg>
+<status status="PASS" endtime="20200410 20:15:23.889" starttime="20200410 20:15:23.859"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.915" level="INFO">${identitas} = GREGORIUS AGUNG SATRIYO WIBISONO</msg>
+<status status="PASS" endtime="20200410 20:15:23.915" starttime="20200410 20:15:23.890"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.943" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:23.943" starttime="20200410 20:15:23.915"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.944" starttime="20200410 20:15:23.944"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.944" starttime="20200410 20:15:23.944"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:23.945" starttime="20200410 20:15:23.944"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:23.945" starttime="20200410 20:15:23.859"></status>
+</kw>
+<kw type="foritem" name="${i} = 9">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:23.975" level="INFO">${nim} = 0246610117</msg>
+<status status="PASS" endtime="20200410 20:15:23.975" starttime="20200410 20:15:23.945"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.003" level="INFO">${identitas} = HANS CHRISTIAN DARMAWAN</msg>
+<status status="PASS" endtime="20200410 20:15:24.003" starttime="20200410 20:15:23.975"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.026" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:24.026" starttime="20200410 20:15:24.003"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.026" starttime="20200410 20:15:24.026"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.027" starttime="20200410 20:15:24.026"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.027" starttime="20200410 20:15:24.027"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.027" starttime="20200410 20:15:23.945"></status>
+</kw>
+<kw type="foritem" name="${i} = 10">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.049" level="INFO">${nim} = 0246710117</msg>
+<status status="PASS" endtime="20200410 20:15:24.049" starttime="20200410 20:15:24.027"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.070" level="INFO">${identitas} = HEAN DREAS</msg>
+<status status="PASS" endtime="20200410 20:15:24.071" starttime="20200410 20:15:24.049"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.094" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:24.094" starttime="20200410 20:15:24.071"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.094" starttime="20200410 20:15:24.094"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.095" starttime="20200410 20:15:24.094"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.095" starttime="20200410 20:15:24.095"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.095" starttime="20200410 20:15:24.027"></status>
+</kw>
+<kw type="foritem" name="${i} = 11">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.117" level="INFO">${nim} = 0246810117</msg>
+<status status="PASS" endtime="20200410 20:15:24.117" starttime="20200410 20:15:24.095"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.139" level="INFO">${identitas} = ISHAK JACUES CAVIN</msg>
+<status status="PASS" endtime="20200410 20:15:24.139" starttime="20200410 20:15:24.117"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.163" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:24.163" starttime="20200410 20:15:24.140"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.163" starttime="20200410 20:15:24.163"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.164" starttime="20200410 20:15:24.163"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.164" starttime="20200410 20:15:24.164"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.164" starttime="20200410 20:15:24.095"></status>
+</kw>
+<kw type="foritem" name="${i} = 12">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.185" level="INFO">${nim} = 0246910117</msg>
+<status status="PASS" endtime="20200410 20:15:24.185" starttime="20200410 20:15:24.164"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.206" level="INFO">${identitas} = KRIANGKRAI TESENA</msg>
+<status status="PASS" endtime="20200410 20:15:24.206" starttime="20200410 20:15:24.185"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.229" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:24.230" starttime="20200410 20:15:24.207"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.230" starttime="20200410 20:15:24.230"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.230" starttime="20200410 20:15:24.230"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.231" starttime="20200410 20:15:24.230"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.231" starttime="20200410 20:15:24.164"></status>
+</kw>
+<kw type="foritem" name="${i} = 13">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.254" level="INFO">${nim} = 0247110117</msg>
+<status status="PASS" endtime="20200410 20:15:24.254" starttime="20200410 20:15:24.231"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.278" level="INFO">${identitas} = NATDANAI LOONLAWAN</msg>
+<status status="PASS" endtime="20200410 20:15:24.278" starttime="20200410 20:15:24.254"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.301" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:24.301" starttime="20200410 20:15:24.278"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.301" starttime="20200410 20:15:24.301"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.302" starttime="20200410 20:15:24.301"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.302" starttime="20200410 20:15:24.302"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.302" starttime="20200410 20:15:24.231"></status>
+</kw>
+<kw type="foritem" name="${i} = 14">
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[2]</arg>
+</arguments>
+<assign>
+<var>${nim}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.326" level="INFO">${nim} = 0247210117</msg>
+<status status="PASS" endtime="20200410 20:15:24.326" starttime="20200410 20:15:24.302"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[3]</arg>
+</arguments>
+<assign>
+<var>${identitas}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.350" level="INFO">${identitas} = NICOLAUS DAVID KRISTIANTO</msg>
+<status status="PASS" endtime="20200410 20:15:24.350" starttime="20200410 20:15:24.326"></status>
+</kw>
+<kw name="Get Text" library="Selenium2Library">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>//table[@id='table_mhs']/tbody/tr[${i}]/td[4]</arg>
+</arguments>
+<assign>
+<var>${kehadiran}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.375" level="INFO">${kehadiran} = Hadir</msg>
+<status status="PASS" endtime="20200410 20:15:24.375" starttime="20200410 20:15:24.350"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data1}</arg>
+<arg>${nim}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.375" starttime="20200410 20:15:24.375"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data2}</arg>
+<arg>${identitas}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.375" starttime="20200410 20:15:24.375"></status>
+</kw>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${data3}</arg>
+<arg>${kehadiran}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.376" starttime="20200410 20:15:24.376"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.376" starttime="20200410 20:15:24.302"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.376" starttime="20200410 20:15:23.342"></status>
+</kw>
+<kw type="for" name="${i} IN RANGE [ 0 | ${rows}-1 ]">
+<kw type="foritem" name="${i} = 0">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.377" level="INFO">${akhir} = [u'0240310116', u'CLEMENS DION YUSILA TIMUR', u'Sakit']</msg>
+<status status="PASS" endtime="20200410 20:15:24.377" starttime="20200410 20:15:24.377"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.377" level="INFO">${akh} = [[u'0240310116', u'CLEMENS DION YUSILA TIMUR', u'Sakit']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.378" starttime="20200410 20:15:24.377"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.378" starttime="20200410 20:15:24.378"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.378" starttime="20200410 20:15:24.377"></status>
+</kw>
+<kw type="foritem" name="${i} = 1">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.380" level="INFO">${akhir} = [u'0240810116', u'GEDE RANGGA RISWANDANU', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.380" starttime="20200410 20:15:24.379"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.380" level="INFO">${akh} = [[u'0240810116', u'GEDE RANGGA RISWANDANU', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.380" starttime="20200410 20:15:24.380"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.381" starttime="20200410 20:15:24.380"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.381" starttime="20200410 20:15:24.378"></status>
+</kw>
+<kw type="foritem" name="${i} = 2">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.382" level="INFO">${akhir} = [u'0245710117', u'AARON PURNOMO MURNIADI', u'Izin']</msg>
+<status status="PASS" endtime="20200410 20:15:24.382" starttime="20200410 20:15:24.381"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.382" level="INFO">${akh} = [[u'0245710117', u'AARON PURNOMO MURNIADI', u'Izin']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.382" starttime="20200410 20:15:24.382"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.383" starttime="20200410 20:15:24.382"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.383" starttime="20200410 20:15:24.381"></status>
+</kw>
+<kw type="foritem" name="${i} = 3">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.383" level="INFO">${akhir} = [u'0245810117', u'ALIF YUSUF VICAUSSIE', u'Alpa']</msg>
+<status status="PASS" endtime="20200410 20:15:24.383" starttime="20200410 20:15:24.383"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.384" level="INFO">${akh} = [[u'0245810117', u'ALIF YUSUF VICAUSSIE', u'Alpa']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.384" starttime="20200410 20:15:24.384"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.384" starttime="20200410 20:15:24.384"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.385" starttime="20200410 20:15:24.383"></status>
+</kw>
+<kw type="foritem" name="${i} = 4">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.385" level="INFO">${akhir} = [u'0245910117', u'ANDREAS CORSINI MIGUEL TAKIMAI', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.385" starttime="20200410 20:15:24.385"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.386" level="INFO">${akh} = [[u'0245910117', u'ANDREAS CORSINI MIGUEL TAKIMAI', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.386" starttime="20200410 20:15:24.385"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.386" starttime="20200410 20:15:24.386"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.386" starttime="20200410 20:15:24.385"></status>
+</kw>
+<kw type="foritem" name="${i} = 5">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.387" level="INFO">${akhir} = [u'0246210117', u'BENICDIKTUS JULIAR ELMAWAN', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.387" starttime="20200410 20:15:24.387"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.388" level="INFO">${akh} = [[u'0246210117', u'BENICDIKTUS JULIAR ELMAWAN', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.388" starttime="20200410 20:15:24.387"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.389" starttime="20200410 20:15:24.388"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.389" starttime="20200410 20:15:24.387"></status>
+</kw>
+<kw type="foritem" name="${i} = 6">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.390" level="INFO">${akhir} = [u'0246410117', u'GILBERTO HORNAY', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.390" starttime="20200410 20:15:24.389"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.390" level="INFO">${akh} = [[u'0246410117', u'GILBERTO HORNAY', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.390" starttime="20200410 20:15:24.390"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.391" starttime="20200410 20:15:24.390"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.391" starttime="20200410 20:15:24.389"></status>
+</kw>
+<kw type="foritem" name="${i} = 7">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.392" level="INFO">${akhir} = [u'0246510117', u'GREGORIUS AGUNG SATRIYO WIBISONO', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.392" starttime="20200410 20:15:24.391"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.393" level="INFO">${akh} = [[u'0246510117', u'GREGORIUS AGUNG SATRIYO WIBISONO', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.393" starttime="20200410 20:15:24.392"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.393" starttime="20200410 20:15:24.393"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.394" starttime="20200410 20:15:24.391"></status>
+</kw>
+<kw type="foritem" name="${i} = 8">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.394" level="INFO">${akhir} = [u'0246610117', u'HANS CHRISTIAN DARMAWAN', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.394" starttime="20200410 20:15:24.394"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.395" level="INFO">${akh} = [[u'0246610117', u'HANS CHRISTIAN DARMAWAN', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.395" starttime="20200410 20:15:24.394"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.395" starttime="20200410 20:15:24.395"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.395" starttime="20200410 20:15:24.394"></status>
+</kw>
+<kw type="foritem" name="${i} = 9">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.397" level="INFO">${akhir} = [u'0246710117', u'HEAN DREAS', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.397" starttime="20200410 20:15:24.396"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.397" level="INFO">${akh} = [[u'0246710117', u'HEAN DREAS', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.397" starttime="20200410 20:15:24.397"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.398" starttime="20200410 20:15:24.397"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.398" starttime="20200410 20:15:24.396"></status>
+</kw>
+<kw type="foritem" name="${i} = 10">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.399" level="INFO">${akhir} = [u'0246810117', u'ISHAK JACUES CAVIN', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.399" starttime="20200410 20:15:24.398"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.399" level="INFO">${akh} = [[u'0246810117', u'ISHAK JACUES CAVIN', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.399" starttime="20200410 20:15:24.399"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.400" starttime="20200410 20:15:24.399"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.400" starttime="20200410 20:15:24.398"></status>
+</kw>
+<kw type="foritem" name="${i} = 11">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.401" level="INFO">${akhir} = [u'0246910117', u'KRIANGKRAI TESENA', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.401" starttime="20200410 20:15:24.400"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.401" level="INFO">${akh} = [[u'0246910117', u'KRIANGKRAI TESENA', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.401" starttime="20200410 20:15:24.401"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.402" starttime="20200410 20:15:24.401"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.402" starttime="20200410 20:15:24.400"></status>
+</kw>
+<kw type="foritem" name="${i} = 12">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.403" level="INFO">${akhir} = [u'0247110117', u'NATDANAI LOONLAWAN', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.403" starttime="20200410 20:15:24.402"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.403" level="INFO">${akh} = [[u'0247110117', u'NATDANAI LOONLAWAN', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.403" starttime="20200410 20:15:24.403"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.404" starttime="20200410 20:15:24.403"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.404" starttime="20200410 20:15:24.402"></status>
+</kw>
+<kw type="foritem" name="${i} = 13">
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${data1[${i}]}</arg>
+<arg>${data2[${i}]}</arg>
+<arg>${data3[${i}]}</arg>
+</arguments>
+<assign>
+<var>${akhir}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.405" level="INFO">${akhir} = [u'0247210117', u'NICOLAUS DAVID KRISTIANTO', u'Hadir']</msg>
+<status status="PASS" endtime="20200410 20:15:24.405" starttime="20200410 20:15:24.404"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${akhir}</arg>
+</arguments>
+<assign>
+<var>${akh}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.405" level="INFO">${akh} = [[u'0247210117', u'NICOLAUS DAVID KRISTIANTO', u'Hadir']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.405" starttime="20200410 20:15:24.405"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>test.csv</arg>
+<arg>${akh}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.406" starttime="20200410 20:15:24.405"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.406" starttime="20200410 20:15:24.404"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:24.406" starttime="20200410 20:15:24.376"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${kode}</arg>
+<arg>${tgl}</arg>
+<arg>${mulai}</arg>
+<arg>${selesai}</arg>
+</arguments>
+<assign>
+<var>${informasi}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.407" level="INFO">${informasi} = [u'7172 - SEMINAR EMMANUEL LEVINAS (THT)', u'Selasa, 20 Agustus 2019', u' 11:10 ', u' 12:50']</msg>
+<status status="PASS" endtime="20200410 20:15:24.407" starttime="20200410 20:15:24.406"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${informasi}</arg>
+</arguments>
+<assign>
+<var>${info}</var>
+</assign>
+<msg timestamp="20200410 20:15:24.408" level="INFO">${info} = [[u'7172 - SEMINAR EMMANUEL LEVINAS (THT)', u'Selasa, 20 Agustus 2019', u' 11:10 ', u' 12:50']]</msg>
+<status status="PASS" endtime="20200410 20:15:24.408" starttime="20200410 20:15:24.408"></status>
+</kw>
+<kw name="Append To Csv File" library="CSVLibrary">
+<doc>This keyword will append data to a new or existing CSV file.</doc>
+<arguments>
+<arg>jadwal.csv</arg>
+<arg>${info}</arg>
+</arguments>
+<status status="PASS" endtime="20200410 20:15:24.409" starttime="20200410 20:15:24.409"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10s</arg>
+</arguments>
+<msg timestamp="20200410 20:15:34.410" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" endtime="20200410 20:15:34.410" starttime="20200410 20:15:24.410"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:34.410" critical="yes" starttime="20200410 20:15:21.935"></status>
+</test>
+<kw type="teardown" name="Close All Browsers" library="Selenium2Library">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20200410 20:15:36.614" starttime="20200410 20:15:34.429"></status>
+</kw>
+<status status="PASS" endtime="20200410 20:15:36.614" starttime="20200410 20:14:41.196"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="3">Critical Tests</stat>
+<stat fail="0" pass="3">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="SiakadCloud" pass="3">SiakadCloud</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
